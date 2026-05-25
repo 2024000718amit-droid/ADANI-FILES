@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ADANI FILES</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #060608;
+    --red: #ff2035;
+    --orange: #ff6b00;
+    --yellow: #ffd600;
+    --white: #f0ece4;
+    --dim: #8a8680;
+    --card: #0f0f12;
+    --border: rgba(255,32,53,0.25);
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:9999;
+    opacity:.4;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--black);
+    border-bottom: 3px solid var(--red);
+    padding: 48px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: 'ADANI FILES';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(255,32,53,0.05);
+    letter-spacing: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 3px solid var(--red);
+    color: var(--red);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    transform: rotate(-1.5deg);
+  }
+
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    line-height: 0.9;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+
+  .header h1 span {
+    color: var(--red);
+  }
+
+  .header-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--dim);
+    margin-top: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .header-meta .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-meta .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .header-meta .stat-label {
+    font-size: 10px;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 0 48px;
+    margin-top: 48px;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* THE CORE CONNECTION */
+  .core-connection {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    padding: 32px;
+    border-radius: 2px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .core-connection h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .core-connection p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c8c4bc;
+  }
+
+  .core-connection p strong {
+    color: var(--white);
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), var(--orange), var(--yellow));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 12px var(--red);
+  }
+
+  .tl-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+
+  .tl-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 4px 0;
+  }
+
+  .tl-body {
+    font-size: 13px;
+    color: #9a9690;
+    line-height: 1.6;
+  }
+
+  .tl-body strong {
+    color: var(--orange);
+  }
+
+  /* SCAM CARDS GRID */
+  .scam-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .scam-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .scam-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .scam-card.red::before { background: var(--red); }
+  .scam-card.orange::before { background: var(--orange); }
+  .scam-card.yellow::before { background: var(--yellow); }
+
+  .scam-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .scam-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .scam-card p {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #8a8680;
+  }
+
+  .scam-card p strong {
+    color: var(--white);
+  }
+
+  .scam-card .tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .tag.red { background: rgba(255,32,53,0.15); color: var(--red); }
+  .tag.orange { background: rgba(255,107,0,0.15); color: var(--orange); }
+  .tag.yellow { background: rgba(255,214,0,0.15); color: var(--yellow); }
+
+  /* MONEY FLOW */
+  .money-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .flow-node {
+    flex: 1;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .flow-node:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 900;
+    z-index: 2;
+  }
+
+  .flow-node:not(:last-child) {
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .flow-node .node-emoji { font-size: 32px; margin-bottom: 10px; }
+  .flow-node .node-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .flow-node .node-desc {
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 1.5;
+  }
+
+  /* THE NUMBERS DON'T LIE */
+  .numbers-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .num-block {
+    background: var(--card);
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .num-block .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .num-block .num-label {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 8px;
+    line-height: 1.5;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* SEBI CONNECTION */
+  .highlight-box {
+    background: rgba(255,32,53,0.07);
+    border: 1px solid rgba(255,32,53,0.3);
+    border-radius: 2px;
+    padding: 28px;
+  }
+
+  .highlight-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #b0aca4;
+  }
+
+  .highlight-box p strong {
+    color: var(--white);
+  }
+
+  /* WHAT YOU CAN DO */
+  .cta-section {
+    background: var(--red);
+    padding: 40px 48px;
+    margin-top: 48px;
+  }
+
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--black);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .cta-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .cta-list li {
+    background: rgba(0,0,0,0.15);
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 2px;
+  }
+
+  .cta-list li span { font-size: 18px; }
+
+  /* FOOTER */
+  .footer {
+    padding: 32px 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    line-height: 1.8;
+  }
+
+  .footer-right {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: rgba(255,255,255,0.08);
+    letter-spacing: 4px;
+  }
+
+  /* FULL WIDTH QUOTE */
+  .pull-quote {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 48px;
+    margin: 48px 0 0;
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    color: var(--white);
+  }
+
+  .pull-quote blockquote span { color: var(--red); }
+  .pull-quote .source {
+    margin-top: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+  }
+
+  /* DIVIDERS */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--red), transparent);
+    margin: 48px 48px 0;
+  }
+
+  /* VISITS TABLE */
+  .visits-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .visits-table th {
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--dim);
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    text-transform: uppercase;
+  }
+
+  .visits-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+
+  .visits-table tr:hover td { background: rgba(255,32,53,0.03); }
+
+  .visits-table .country { font-weight: 700; color: var(--white); }
+  .visits-table .year-tag {
+    background: var(--red);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .visits-table .adani-gain {
+    color: var(--orange);
+    font-size: 12px;
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,214,0,0.1);
+    border: 1px solid rgba(255,214,0,0.3);
+    color: var(--yellow);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    margin: 2px;
+  }
+
+  .badge.red {
+    background: rgba(255,32,53,0.1);
+    border-color: rgba(255,32,53,0.3);
+    color: var(--red);
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(255,107,0,0.08);
+    border-left: 4px solid var(--orange);
+    padding: 20px 24px;
+    border-radius: 0 2px 2px 0;
+    margin-top: 12px;
+  }
+
+  .callout p {
+    font-size: 13px;
+    color: #c8c4bc;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--orange); }
+
+  /* RTI EXEMPT BOX */
+  .rti-box {
+    background: var(--card);
+    border: 2px dashed rgba(255,214,0,0.3);
+    padding: 28px;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+  }
+
+  .rti-box .rti-stamp {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    padding: 4px 16px;
+    white-space: nowrap;
+  }
+
+  .rti-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .rti-box p {
+    font-size: 13px;
+    color: #9a9690;
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .rti-box p strong { color: var(--white); }
+
+  .mb-12 { margin-bottom: 12px; }
+  .mt-12 { margin-top: 12px; }
+  .mt-48 { margin-top: 48px; }
+
+  /* PAGE BREAKS FOR PRINTING */
+  @media print {
+    body { width: 900px; }
+    .header::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="stamp">⚠ PUBLIC INTEREST DOCUMENT · SHARE FREELY</div>
+  <h1>THE <span>ADANI</span><br>FILES</h1>
+  <div class="header-sub">HOW ONE BILLIONAIRE GREW WHILE 1.4 BILLION INDIANS PAID THE PRICE</div>
+  <div class="header-meta">
+    <div class="stat">
+      <div class="stat-num">10X</div>
+      <div class="stat-label">Adani's wealth growth<br>since 2014</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Major airports<br>privatized to Adani</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">₹20K Cr</div>
+      <div class="stat-label">PM CARES fund<br>(0 public audit)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24L+</div>
+      <div class="stat-label">Students affected<br>NEET paper leak</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE CORE LOOP ═══ -->
+<div class="section">
+  <div class="section-label">01 · The Core Loop</div>
+  <div class="core-connection">
+    <h2>THE ARRANGEMENT, EXPLAINED SIMPLY</h2>
+    <p>
+      Since 2014, a documented pattern has emerged: <strong>government contracts, privatised public assets, and diplomatic cover go to Adani Group</strong> — which had ~$7 billion in net worth in 2014 and rocketed past $100 billion by 2022.
+      In return, Adani Group is <strong>BJP's biggest documented corporate backer</strong> — buying electoral bonds, funding aligned media, and supporting the ruling political ecosystem.
+      Meanwhile, taxes on common goods went up, student exam systems collapsed, and public infrastructure is now owned by a private monopoly with zero prior experience.
+      <br><br>
+      <strong>This is not conspiracy. These are documented, reported, court-verified facts. Sources listed at the bottom.</strong>
+    </p>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="money-flow mt-12">
+    <div class="flow-node">
+      <div class="node-emoji">🗳️</div>
+      <div class="node-title">VOTES →<br>POWER</div>
+      <div class="node-desc">BJP wins 2014, 2019 on development promises. Common man buys in.</div>
+    </div>
+    <div class="flow-node">
+      <div class="node-emoji">🏗️</div>
+      <div class="node-title">CONTRACTS →<br>ADANI</div>
+      <div class="node-desc">Airports, ports, coal, roads, power — handed to Adani via privatisation.</div>
+    </div>
+    <div class="flow-node">
+      <div class="node-emoji">💰</div>
+      <div class="node-title">WEALTH →<br>BILLIONAIRE</div>
+      <div class="node-desc">Adani becomes Asia's richest (briefly). Wealth grows 10x in Modi years.</div>
+    </div>
+    <div class="flow-node">
+      <div class="node-emoji">🔄</div>
+      <div class="node-title">MONEY →<br>BACK TO BJP</div>
+      <div class="node-desc">Electoral bonds, media acquisition, political donations flow back.</div>
+    </div>
+    <div class="flow-node">
+      <div class="node-emoji">😔</div>
+      <div class="node-title">YOU →<br>PAY MORE</div>
+      <div class="node-desc">Higher taxes, leaked exams, no public accountability. Repeat cycle.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE TIMELINE ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">02 · Timeline of Documented Events</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-year">2014</div>
+      <div class="tl-title">Modi Wins. Adani's Private Jet Flies Him to Delhi for Oath Ceremony.</div>
+      <div class="tl-body">Gautam Adani's private plane flew PM Modi from Ahmedabad to Delhi for the swearing-in. Both are from Gujarat. <strong>Adani net worth at the time: ~$7 billion.</strong></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2016</div>
+      <div class="tl-title">Demonetisation — 99.3% of Notes Returned. Nothing Changed.</div>
+      <div class="tl-body">₹500 & ₹1000 notes scrapped overnight. RBI's own report confirmed <strong>99.3% of all demonetised notes came back</strong> — meaning black money wasn't destroyed. Small businesses and farmers devastated. Large corporates who were already digital? Unaffected.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2019</div>
+      <div class="tl-title">6 Major Airports Handed to Adani — a Company With ZERO Airport Experience.</div>
+      <div class="tl-body">Airports Authority of India privatised Ahmedabad, Lucknow, Mangalore, Jaipur, Thiruvananthapuram, and Guwahati airports. Adani Group, which had <strong>never operated an airport</strong>, won all 6. Mumbai airport (CSIA) followed via GVK acquisition.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div class="tl-title">PM CARES Fund Created — Exempt from RTI and CAG Audit.</div>
+      <div class="tl-body">March 28, 2020. A COVID relief fund created by PM Modi's office. <strong>Not subject to the Right to Information Act. Not audited by the Comptroller and Auditor General of India.</strong> Collected ₹10,990 crore+ per government figures, but independent verification is legally impossible. Adani Group was among the donors.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2022</div>
+      <div class="tl-title">Adani Becomes Asia's Richest Person. Briefly World's 2nd Richest.</div>
+      <div class="tl-body">From $7B in 2014 to a peak of <strong>~$150 billion</strong> in 2022. The fastest wealth accumulation in India's corporate history — coinciding precisely with 8 years of BJP government contracts and privatisation.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2023 JAN</div>
+      <div class="tl-title">Hindenburg Research Report Drops. Adani Stocks Lose $100B+.</div>
+      <div class="tl-body">US short-seller Hindenburg Research released a 100+ page report alleging <strong>stock manipulation, accounting fraud, and money laundering through a web of offshore shell companies in Mauritius and the Cayman Islands</strong>. Adani stocks crashed. BJP government's response: silence, then deflection. Opposition MPs who tried to raise it in Parliament were drowned out.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2023 AUG</div>
+      <div class="tl-title">Hindenburg's Follow-Up: SEBI Chief Madhabi Puri Buch Implicated.</div>
+      <div class="tl-body">Hindenburg alleged that <strong>SEBI chairperson Madhabi Puri Buch and her husband had investments in the same offshore funds</strong> used in the alleged Adani stock scheme. She was the regulator investigating Adani. She denied the allegations. SEBI's investigation into Adani went quiet.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2023</div>
+      <div class="tl-title">Adani Acquires NDTV. Independent Voice Silenced.</div>
+      <div class="tl-body">Adani Group took over NDTV — one of India's most respected news channels — forcing out founders Prannoy Roy and Radhika Roy. Editorial independence deteriorated. <strong>India's press freedom ranking: 159th out of 180 countries</strong> (RSF Press Freedom Index 2023).</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2024 FEB</div>
+      <div class="tl-title">Supreme Court Strikes Down Electoral Bonds as Unconstitutional.</div>
+      <div class="tl-body">Electoral bonds — anonymous political funding instruments — were declared unconstitutional. Data revealed <strong>BJP received ~55% of all bonds (₹6,566 crore)</strong>. Adani-linked companies were among purchasers. Multiple companies under ED/CBI investigation had bought bonds — and cases slowed or stopped afterward.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2024 JUN</div>
+      <div class="tl-title">NEET Paper Leak — 24 Lakh Students' Futures Destroyed.</div>
+      <div class="tl-body">NEET-UG 2024 exam paper was leaked across multiple states before the exam. <strong>24+ lakh students</strong> affected. UGC-NET was cancelled just one day after being conducted. CBI launched investigation. NTA (National Testing Agency), under the government, faced massive accountability questions. Students who spent years preparing lost their chance.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2024 NOV</div>
+      <div class="tl-title">US Department of Justice INDICTS Gautam Adani for Bribery.</div>
+      <div class="tl-body">The US DOJ indicted Gautam Adani for allegedly <strong>paying ~$265 million (₹2,200+ crore) in bribes to Indian state government officials</strong> to secure solar energy contracts for Adani Green Energy. The SEC also filed charges. Kenya and other countries cancelled Adani contracts. Modi government's reaction: protective silence.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ KEY NUMBERS ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">03 · Numbers That Don't Lie</div>
+  <div class="numbers-section">
+    <div class="num-block">
+      <div class="big-num">₹6,566 Cr</div>
+      <div class="num-label">Electoral bonds received by BJP — 55% of national total</div>
+    </div>
+    <div class="num-block">
+      <div class="big-num">$265M</div>
+      <div class="num-label">Alleged bribes paid by Adani — per US DOJ indictment</div>
+    </div>
+    <div class="num-block">
+      <div class="big-num">159/180</div>
+      <div class="num-label">India's press freedom rank (RSF 2023) — down from 140 in 2014</div>
+    </div>
+    <div class="num-block">
+      <div class="big-num">0</div>
+      <div class="num-label">CAG / RTI audits of PM CARES Fund. Zero. None. Ever.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ALL THE SCAMS ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">04 · The Full Scam Map</div>
+  <div class="scam-grid">
+
+    <div class="scam-card red">
+      <span class="icon">🏦</span>
+      <h3>PM CARES FUND</h3>
+      <p>Created outside RTI and CAG jurisdiction. <strong>No independent audit ever conducted.</strong> PM is its own chairman. Who donated what, and where it went, is legally secret. The government's own PM National Relief Fund already existed — PM CARES was created in parallel, with zero accountability.</p>
+      <div class="tag red">RTI EXEMPT · UNAUDITED</div>
+    </div>
+
+    <div class="scam-card orange">
+      <span class="icon">🛫</span>
+      <h3>AIRPORT PRIVATISATION</h3>
+      <p><strong>6 major government airports given to Adani</strong> — a company that had never run an airport. Taxpayers built these airports over decades. You now pay higher user fees at airports you once owned. Mumbai's CSIA followed. Total: 7 major airports under one company.</p>
+      <div class="tag orange">PUBLIC ASSETS → PRIVATE MONOPOLY</div>
+    </div>
+
+    <div class="scam-card yellow">
+      <span class="icon">📰</span>
+      <h3>NDTV TAKEOVER</h3>
+      <p>Adani acquired NDTV — one of India's last major independent news channels. <strong>Founders were forced out.</strong> Post-acquisition coverage of Adani controversies dropped dramatically. If you control the news, you control the narrative. India's press freedom rank fell to 159th globally.</p>
+      <div class="tag yellow">MEDIA CAPTURE</div>
+    </div>
+
+    <div class="scam-card red">
+      <span class="icon">📋</span>
+      <h3>ELECTORAL BOND SCAM</h3>
+      <p>Anonymous bonds allowed corporates to fund political parties secretly. <strong>Supreme Court called it unconstitutional.</strong> BJP got 55% of all bonds. Companies under government investigation bought bonds — and those investigations quietly slowed. It was legalised quid-pro-quo.</p>
+      <div class="tag red">SC STRUCK DOWN AS UNCONSTITUTIONAL</div>
+    </div>
+
+    <div class="scam-card orange">
+      <span class="icon">🎓</span>
+      <h3>NEET / UGC-NET PAPER LEAK</h3>
+      <p><strong>24 lakh+ students</strong> had their medical entrance exam (NEET 2024) compromised by a nationwide paper leak. UGC-NET was cancelled the day after it was held. Years of preparation destroyed. The agency responsible (NTA) reported to the Education Ministry. No minister resigned.</p>
+      <div class="tag orange">24 LAKH STUDENTS AFFECTED</div>
+    </div>
+
+    <div class="scam-card yellow">
+      <span class="icon">💸</span>
+      <h3>DEMONETISATION DISASTER</h3>
+      <p>Overnight scrapping of ₹500 & ₹1000 notes claimed to fight black money. <strong>RBI confirmed 99.3% of notes returned</strong> — black money wasn't destroyed. 100+ people died in bank queues. Small businesses collapsed. The official RBI report on printing costs was withheld for years.</p>
+      <div class="tag yellow">99.3% NOTES RETURNED · RBI DATA</div>
+    </div>
+
+    <div class="scam-card red">
+      <span class="icon">⚖️</span>
+      <h3>US DOJ INDICTMENT OF ADANI</h3>
+      <p>US federal court indicted Gautam Adani for <strong>alleged $265M bribery scheme</strong> to secure solar contracts across Indian states. SEC filed civil charges. Kenya, Sri Lanka reviewed Adani deals. Instead of cooperating, BJP called it a "foreign attack on India." Adani's stocks dropped again.</p>
+      <div class="tag red">US DOJ INDICTED · NOV 2024</div>
+    </div>
+
+    <div class="scam-card orange">
+      <span class="icon">📊</span>
+      <h3>SEBI REGULATOR CONFLICT</h3>
+      <p>Hindenburg alleged SEBI chief Madhabi Puri Buch — <strong>the very regulator investigating Adani</strong> — held investments in offshore funds linked to the Adani scheme. She denied it. But SEBI's Adani investigation produced no meaningful action. Supreme Court committee noted SEBI hadn't investigated 13 of 24 allegations.</p>
+      <div class="tag orange">REGULATOR INVESTIGATING HAD STAKE IN ACCUSED</div>
+    </div>
+
+    <div class="scam-card yellow">
+      <span class="icon">⛽</span>
+      <h3>COAL OVERPRICING ALLEGATIONS</h3>
+      <p>DGRI (Directorate of Revenue Intelligence) investigated allegations that <strong>Adani Group over-invoiced coal imports from Indonesia</strong> — potentially defrauding Indian power companies (and consumers). The investigation was significantly watered down post-2014. Multiple IAS officers transferred after pressing the case.</p>
+      <div class="tag yellow">INVESTIGATION WATERED DOWN</div>
+    </div>
+
+    <div class="scam-card red">
+      <span class="icon">🌍</span>
+      <h3>FOREIGN VISITS = ADANI EXPANSION</h3>
+      <p>Modi's foreign trips consistently preceded or coincided with <strong>Adani Group winning contracts in those countries</strong>: Australia (Carmichael coal), Sri Lanka (wind power), Kenya (airports, electricity), Bangladesh (power supply). Diplomatic resources of a nation used for one company's business development.</p>
+      <div class="tag red">DIPLOMACY FOR ONE COMPANY</div>
+    </div>
+
+    <div class="scam-card orange">
+      <span class="icon">🚢</span>
+      <h3>PORT MONOPOLY</h3>
+      <p>Adani Ports now controls <strong>Mundra, Hazira, Dhamra, Kattupalli, Krishnapatnam, Gangavaram</strong> and more — becoming India's largest private port operator. Several acquired from public sector or with government concessions. India's strategic coastal infrastructure under one private group.</p>
+      <div class="tag orange">LARGEST PRIVATE PORT OPERATOR</div>
+    </div>
+
+    <div class="scam-card yellow">
+      <span class="icon">💊</span>
+      <h3>GST ON COMMON GOODS</h3>
+      <p>While corporate tax was <strong>slashed from 30% to 22% in 2019</strong> (saving India Inc. ₹1.45 lakh crore annually), GST was applied to packaged food, medicines, and everyday goods. The tax burden shifted from corporations to ordinary people. Over 7 years, middle-class households pay more, corporations pay less.</p>
+      <div class="tag yellow">CORPORATE TAX CUT · COMMON MAN TAX HIKED</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FOREIGN VISITS TABLE ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">05 · Modi's Foreign Visits → Adani's Global Expansion</div>
+  <div style="background: var(--card); border: 1px solid var(--border); border-radius: 2px; overflow: hidden;">
+    <table class="visits-table">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Year</th>
+          <th>Adani Gain After/During Visit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="country">🇦🇺 Australia</td>
+          <td><span class="year-tag">2014</span></td>
+          <td class="adani-gain">Adani's Carmichael coal mine in Queensland — received key clearances. Australian public protested Adani's environmental impact for years.</td>
+        </tr>
+        <tr>
+          <td class="country">🇱🇰 Sri Lanka</td>
+          <td><span class="year-tag">2023</span></td>
+          <td class="adani-gain">Adani Green Energy awarded wind power projects in Mannar & Pooneryn worth hundreds of millions — while Sri Lanka was in economic crisis and dependent on Indian aid.</td>
+        </tr>
+        <tr>
+          <td class="country">🇰🇪 Kenya</td>
+          <td><span class="year-tag">2024</span></td>
+          <td class="adani-gain">Adani awarded contracts for Jomo Kenyatta International Airport and electricity transmission. Cancelled post-US DOJ indictment after Kenyan public outrage.</td>
+        </tr>
+        <tr>
+          <td class="country">🇧🇩 Bangladesh</td>
+          <td><span class="year-tag">2021</span></td>
+          <td class="adani-gain">Adani Power's controversial electricity supply deal — Bangladesh reportedly paid significantly above market rates. Deal under review by Sheikh Hasina's successor government.</td>
+        </tr>
+        <tr>
+          <td class="country">🇮🇱 Israel</td>
+          <td><span class="year-tag">2023</span></td>
+          <td class="adani-gain">Adani Ports has presence at Haifa port. India's geopolitical positioning aligned with Adani's port expansion in strategic Mediterranean trade routes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ PM CARES DEEP DIVE ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">06 · PM CARES: The Untouchable Fund</div>
+  <div class="rti-box">
+    <div class="rti-stamp">⚠ RTI EXEMPT · CAG EXEMPT · AUDIT EXEMPT</div>
+    <h3>PM CARES FUND</h3>
+    <p>
+      Created on <strong>March 28, 2020</strong> — just days into the COVID lockdown — PM CARES (Prime Minister's Citizen Assistance and Relief in Emergency Situations) is a fund chaired by the PM himself. <strong>It is not subject to the Right to Information Act.</strong> It is not audited by the Comptroller and Auditor General — India's constitutional auditor. The government argued in courts it is a "public charitable trust," not a government fund — yet its chairman is the Prime Minister of India and it uses government infrastructure. The existing PM National Relief Fund was already functional. A parallel, unaccountable fund was created. No Indian citizen can legally know who donated, how much, or where the money went.
+    </p>
+  </div>
+  <div class="callout">
+    <p><strong>Adani Group donated to PM CARES Fund.</strong> The exact amount is unknown because RTI requests about individual donors are rejected. This is legal in PM CARES. It is not legal for the PM National Relief Fund. The difference? The old fund has Parliament oversight.</p>
+  </div>
+</div>
+
+<!-- ═══ WHAT THE SEBI SAGA TELLS US ═══ -->
+<div class="divider"></div>
+<div class="section mt-48">
+  <div class="section-label">07 · The Regulator Problem</div>
+  <div class="highlight-box">
+    <h3>WHEN THE WATCHDOG WORKS FOR THE WOLF</h3>
+    <p>
+      India's financial regulator SEBI was tasked with investigating the Hindenburg allegations against Adani. But Hindenburg's August 2023 follow-up report alleged that <strong>SEBI chairperson Madhabi Puri Buch herself — and her husband — held investments in the same obscure Mauritius-based offshore funds</strong> that were allegedly used by the Adani Group in the alleged stock manipulation scheme.
+      <br><br>
+      She denied the allegations. The government stood by her. SEBI's investigation produced minimal findings. The Supreme Court's committee on the matter noted that SEBI had <strong>investigated only 11 of 24 allegations</strong> in the Hindenburg report and asked SEBI to expedite — but no major action followed.
+      <br><br>
+      <strong>When the person investigating you profits from the same system you're accused of manipulating, justice doesn't arrive.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<div class="pull-quote mt-48">
+  <blockquote>
+    "INDIA'S AIRPORTS, PORTS, COAL, POWER AND MEDIA.<br>
+    <span>ONE MAN OWNS IT.</span><br>
+    ONE GOVERNMENT GAVE IT TO HIM."
+  </blockquote>
+  <div class="source">BASED ON DOCUMENTED PUBLIC REPORTING · HINDENBURG RESEARCH · US DOJ · SUPREME COURT RECORDS · RSF PRESS FREEDOM INDEX · RBI ANNUAL REPORT</div>
+</div>
+
+<!-- ═══ WHAT YOU CAN DO ═══ -->
+<div class="cta-section">
+  <h2>WHAT CAN YOU ACTUALLY DO?</h2>
+  <ul class="cta-list">
+    <li><span>📢</span> Share this. Awareness is the first step. Forward to family WhatsApp groups.</li>
+    <li><span>🗳️</span> Vote in every election — local, state, national. Every one counts.</li>
+    <li><span>📖</span> Read: The Hindenburg Report (free online). Read The Wire, Scroll, The Hindu.</li>
+    <li><span>🔍</span> File RTIs on local issues. Sunlight is the best disinfectant.</li>
+    <li><span>🧑‍🤝‍🧑</span> Support independent journalists — they are the last line of defence.</li>
+    <li><span>📱</span> Don't just consume BJP or opposition content. Cross-check everything.</li>
+    <li><span>📊</span> Demand CAG audit of PM CARES. Sign petitions. Write to MPs.</li>
+    <li><span>🎓</span> Protest NEET failures. Students have the right to fair exams.</li>
+  </ul>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <div class="footer-left">
+    SOURCES: Hindenburg Research Report (Jan 2023, Aug 2023) · US Department of Justice Indictment (Nov 2024) ·<br>
+    Supreme Court of India judgement on Electoral Bonds (Feb 2024) · RBI Annual Report (Demonetisation) ·<br>
+    RSF Press Freedom Index 2023 · CBI/NTA statements on NEET 2024 · AAI Privatisation records ·<br>
+    RTI rejections on PM CARES Fund (documented by multiple journalists)<br><br>
+    ALL CLAIMS ARE BASED ON DOCUMENTED PUBLIC REPORTING AND OFFICIAL RECORDS.
+  </div>
+  <div class="footer-right">SHARE<br>THIS</div>
+</div>
+
+</body>
+</html>
